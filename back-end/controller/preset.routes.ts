@@ -129,7 +129,7 @@ presetRouter.get('/:userId', async (req: Request & {auth: any}, res: Response, n
 /**
  * @swagger
  * /preset/active/{userId}:
- *   get:
+ *   put:
  *     security:
  *       - bearerAuth: []
  *     summary: Get the active preset by the user id
@@ -147,7 +147,6 @@ presetRouter.get('/:userId', async (req: Request & {auth: any}, res: Response, n
  *             schema:
  *               $ref: '#/components/schemas/Preset'
  */
-
 presetRouter.get('/active/:userId', async (req: Request & {auth: any}, res: Response, next: NextFunction) => {
     try {
         const userId = parseInt(req.params.userId);
@@ -160,6 +159,27 @@ presetRouter.get('/active/:userId', async (req: Request & {auth: any}, res: Resp
     }
 });
 
+/**
+ * @swagger
+ * /preset/active/{presetId}:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: set the active preset by the preset id
+ *     parameters:
+ *       - in: path
+ *         name: presetId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: the new active Preset object.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Preset'
+ */
 presetRouter.put('/active/:presetId', async (req: Request & {auth: any}, res: Response, next: NextFunction) => {
     try {
         const presetId = parseInt(req.params.presetId);
