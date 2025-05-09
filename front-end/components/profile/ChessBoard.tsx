@@ -12,7 +12,7 @@ interface ChessboardProps {
 const Chessboard = ({ 
     reskins = [],
     theme = '_default', 
-    boardSize = 600, 
+    boardSize = 400, 
     position: pieces,
     perspective = 'white',
 }: ChessboardProps) => {
