@@ -27,9 +27,3 @@ jobs:
           fail-build: false
           severity-cutoff: medium
           output-format: json
-          
-      - name: Upload SBOM as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: sbom.json
-          path: sarif_file: ${{ steps.sbom.outputs.sbom }}
